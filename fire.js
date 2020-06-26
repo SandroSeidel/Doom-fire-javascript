@@ -6,20 +6,20 @@ const fireColorsPalette = [{"r":7,"g":7,"b":7},{"r":31,"g":7,"b":7},{"r":47,"g":
 
 function start() {
 
-    createFireDataStructure();
-    createFireSource();
-    renderFire();
+  createFireDataStructure();
+  createFireSource();
+  renderFire();
 
-    setInterval(calculateFirePropagation, 50);
+  setInterval(calculateFirePropagation, 50);//set the refresh rate for each pixelIndex
 }
 
 function createFireDataStructure() {
 
-    const numberOfPixels = fireWidth * fireHeigth;
+  const numberOfPixels = fireWidth * fireHeigth;
 
-    for (let i = 0; i < numberOfPixels; i++) {
-        firePixelsArray[i] = 0;
-    }
+  for (let i = 0; i < numberOfPixels; i++) {
+    firePixelsArray[i] = 0;
+  }
 }//add a defalut value for each item in the array
 
 function calculateFirePropagation() {
@@ -40,7 +40,7 @@ function updateFireIntensityPerPixel(currentPixelIndex) {
     return
   }
 
-  const decay = Math.floor(Math.random() * 3);
+  const decay = Math.floor(Math.random() * 3);//set a random decay value
   const belowPixelFireIntensity = firePixelsArray[belowPixelIndex];
   const newFireIntensity = (
     belowPixelFireIntensity - decay >= 0 ? belowPixelFireIntensity - decay : 0
@@ -50,18 +50,18 @@ function updateFireIntensityPerPixel(currentPixelIndex) {
 }
 
 function renderFire() {
-    const debug = false;
+  const debug = false;
 
-    let html = '<table cellpadding=0 cellspacing=0';
+  let html = '<table cellpadding=0 cellspacing=0';
 
-    for (let row = 0; row < fireHeigth; row++) {
-      html += '<tr>';
+  for (let row = 0; row < fireHeigth; row++) {
+    html += '<tr>';
 
-      for (let column = 0; column < fireWidth; column++) {
-        const pixelIndex = column + (fireWidth * row);
-        const fireIntensity = firePixelsArray[pixelIndex];
+    for (let column = 0; column < fireWidth; column++) {
+      const pixelIndex = column + (fireWidth * row);
+      const fireIntensity = firePixelsArray[pixelIndex];
 
-        if (debug === true) {
+      if (debug === true) {
           html += '<td>';
           html += `<div class="pixel-index">${pixelIndex}</div>`;
           html += fireIntensity;
@@ -72,7 +72,7 @@ function renderFire() {
           html += `<td class="pixel" style="background-color: rgb(${colorString})">`
         }
       }
-      html += '</tr>';
+     html += '</tr>';
     }
 
     html += '</table';
@@ -92,4 +92,4 @@ function createFireSource() {
 
 }
 
-start();
+start();//start 
