@@ -1,3 +1,4 @@
+//a
 const firePixelsArray = [];
 const fireWidth = 50;
 const fireHeigth = 50;
